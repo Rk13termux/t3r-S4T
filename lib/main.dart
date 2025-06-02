@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'models/user_model.dart';
 import 'screens/login_screen.dart';
 import 'screens/home_screen.dart';
 import 'screens/register_screen.dart';
-import 'models/user_model.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +28,8 @@ Future<UserModel?> _loadUser() async {
 
 class MyApp extends StatelessWidget {
   final UserModel? initialUser;
-  const MyApp({super.key, this.initialUser});
+
+  const MyApp({super.key, required this.initialUser});
 
   @override
   Widget build(BuildContext context) {
@@ -36,8 +37,8 @@ class MyApp extends StatelessWidget {
       title: 'Tienda de Scripts',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFF262729), // Gris oscuro
-        primaryColor: const Color(0xFF3489fe), // Azul
+        scaffoldBackgroundColor: const Color(0xFF262729), // Fondo gris oscuro
+        primaryColor: const Color(0xFF3489fe), // Azul para botones/títulos
         appBarTheme: const AppBarTheme(
           backgroundColor: Color(0xFF262729),
           elevation: 0,
@@ -52,8 +53,8 @@ class MyApp extends StatelessWidget {
           style: ElevatedButton.styleFrom(
             backgroundColor: const Color(0xFF3489fe),
             textStyle: const TextStyle(
-              color: Colors.white,
               fontWeight: FontWeight.bold,
+              color: Colors.white,
             ),
           ),
         ),
@@ -70,7 +71,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/login': (context) => const LoginScreen(),
         '/register': (context) => const RegisterScreen(),
-        '/home': (context) => const HomeScreen(),
+        '/home': (context) => HomeScreen(user: initialUser),
       },
     );
   }

@@ -4,9 +4,12 @@ import 'dart:convert';
 
 import '../utils/api_service.dart';
 import '../models/script_model.dart';
+import '../models/user_model.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final UserModel? user;
+
+  const HomeScreen({super.key, this.user});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -30,7 +33,10 @@ class _HomeScreenState extends State<HomeScreen> {
     try {
       final response = await http.get(
         Uri.parse('${ApiService.baseUrl}/scripts'),
-        headers: {'Content-Type': 'application/json'},
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': 'Bearer ${widget.user?.token ?? ''}', // Usar token si existe
+        },
       );
 
       if (response.statusCode == 200) {
@@ -72,7 +78,9 @@ class _HomeScreenState extends State<HomeScreen> {
         ],
       ),
       body: _isLoading
-          ? const Center(child: CircularProgressIndicator(color: Color(0xFF3489fe)))
+          ? const Center(
+        child: CircularProgressIndicator(color: Color(0xFF3489fe)),
+      )
           : _scripts.isEmpty
           ? const Center(
         child: Text(
@@ -87,7 +95,8 @@ class _HomeScreenState extends State<HomeScreen> {
           return Card(
             color: const Color(0xFF262729),
             elevation: 2,
-            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            margin:
+            const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: ListTile(
               title: Text(
                 script.title,
@@ -108,7 +117,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               onTap: () {
                 // Aquí iría la navegación al detalle del script
-                // Por ahora lo dejamos pendiente
+                // Puedes usar Navigator.push(context, ...) si deseas.
               },
             ),
           );
