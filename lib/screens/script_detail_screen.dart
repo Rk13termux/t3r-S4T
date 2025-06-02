@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../models/script_model.dart';
-import '../services/script_service.dart';
 import '../services/payment_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 
