@@ -1,0 +1,44 @@
+name: t3r_s4t
+description: "APK profesional para la Tienda de Scripts. Desarrollada en Flutter y conectada a un backend Node.js en Heroku."
+publish_to: 'none' # Evita publicar en pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.8.1 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Iconos de Cupertino (para iOS)
+  cupertino_icons: ^1.0.8
+
+  # Dependencias de producción
+  http: ^1.1.0
+  shared_preferences: ^2.2.2
+  jwt_decoder: ^2.0.1
+  url_launcher: ^6.1.6
+  provider: ^6.0.5
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  uses-material-design: true
+
+  # Sección para assets (actívala si agregas imágenes o fuentes)
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/fonts/
+
+  # Ejemplo para agregar fuentes personalizadas (opcional)
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
