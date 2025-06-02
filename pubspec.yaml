@@ -5,7 +5,7 @@ publish_to: 'none' # Evita publicar en pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.8.1 <4.0.0'
+  sdk: '>=3.2.0 <4.0.0'
 
 dependencies:
   flutter:
@@ -29,16 +29,3 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # Sección para assets (actívala si agregas imágenes o fuentes)
- # assets:
- #   - assets/images/
- #   - assets/icons/
- #   - assets/fonts/
-
-  # Ejemplo para agregar fuentes personalizadas (opcional)
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
